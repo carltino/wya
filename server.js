@@ -9,18 +9,13 @@ const cors = require('cors');
 
 const express = require('express');
 const app = express();
-// const authRoutes = require('./routes/auth');
 
 app.use(express.json());
-// app.use('/auth', authRoutes);
 app.use(cors())
 
-
-
-// const express = require('express');
-// const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
+const Marker = require('./models/Marker')
 
 app.post('/register', async (req, res) => {
     try {
@@ -50,11 +45,21 @@ app.post('/login', async (req, res) => {
         const token = jwt.sign({ _id: user._id }, 'IrisGrace0816'); // Replace with a strong secret
         res.send({ token });
     } catch (error) {
-        res.status(400).send(error);
+        res.status(403).send(error);
     }
 });
 
-// module.exports = router;
+app.get('/markers', async (req, res) => {
+    try {
+
+        const markers = await Marker.find();
+        res.json(markers);
+    } catch (error) {
+      res.status(500).send(error);
+
+    }
+
+})
 
 
 

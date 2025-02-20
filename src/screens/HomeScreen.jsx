@@ -1,10 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import React, {useState, useEffect} from 'react'
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { InnerContainer, MyContainer, PageTitle, SubTitle, MyTextBox } from '../../styles';
+import axios from 'axios'
 
 
 const HomeScreen = () => {
+
+  const [markers, setMarkers] = useState([]);
+  
+  useEffect(() => {
+    axios.get('http://localhost:5000/markers')
+    .then(resp => {
+      console.log("my markerss " +resp.data)
+      setMarkers(resp.data);
+  })
+    .catch(err => console.log(err));
+  }, []);
+
   return (
     <MyContainer>
         <PageTitle>Welcome To WYA</PageTitle>
@@ -17,12 +30,21 @@ const HomeScreen = () => {
               provider={PROVIDER_GOOGLE} // remove if not using Google Maps
               style={styles.map}
               region={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.02,
+                latitude: 33.7528,
+                longitude: -84.3863,
+                latitudeDelta: 0.031,
                 longitudeDelta: 0.0121,
               }}
             >
+
+            {markers.map((marker, index) => (
+                    <Marker
+                        key={index}
+                        coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+                        title={marker.username}
+                        description={marker.username}
+                    />
+                ))}
             </MapView>
           </View>
         </View>

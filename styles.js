@@ -74,7 +74,9 @@ export const ButtonArea = styled.View`
     width: 70%;
     align-items: center;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+    margin-right: 40px;
+    margin-left: 40px;
 `
 
 export const MyButtonText = styled.Text`
