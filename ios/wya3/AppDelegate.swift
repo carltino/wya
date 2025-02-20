@@ -7,10 +7,11 @@ import GoogleMaps
 @main
 class AppDelegate: RCTAppDelegate {
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    GMSServices.provideAPIKey("AIzaSyDj6sx6MTJ4rNxvI5jpYM3AMMJ-ifPc-Ww");
+
     self.moduleName = "wya3"
     self.dependencyProvider = RCTAppDependencyProvider()
 
-    GMSServices.provideAPIKey("AIzaSyCW8NqmujsrRae4ppCH-cddbkBL6_FC0RI");
 
 
     // You can add your custom initial props in the dictionary below.
