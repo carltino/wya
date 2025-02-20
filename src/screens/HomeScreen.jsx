@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, Image, TouchableOpacity, View } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { InnerContainer, MyContainer, PageTitle, SubTitle, MyTextBox } from '../../styles';
@@ -20,8 +20,13 @@ const HomeScreen = () => {
 
   return (
     <MyContainer>
-        <PageTitle>Welcome To WYA</PageTitle>
-        <SubTitle>Find other's near you below</SubTitle>
+        <View style={styles.header}>
+          <View style={styles.headerText}>
+            <PageTitle>Welcome To WYA</PageTitle>
+            <SubTitle>Find other's near you below</SubTitle>
+          </View>
+          <TouchableOpacity style={styles.profileContainer}><Image style={styles.profileImage} source={require('../assets/spidey.jpeg')} /></TouchableOpacity>
+        </View>
         <MyTextBox placeholder="Search for a Location" 
           placeholderTextColor = "#ffffff"/>
         <View style={styles.container}>
@@ -48,7 +53,6 @@ const HomeScreen = () => {
             </MapView>
           </View>
         </View>
-
     </MyContainer>
   )
 };
@@ -70,4 +74,28 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
+  profileContainer: {
+    position: 'absolute',
+    top: 10,
+    right: 5,
+    width: 70,
+    height: 70,
+    borderRadius: 25,
+    overflow: 'hidden',
+    elevation: 5,
+    borderColor: '#fff',
+    shadowColor: '#000'
+  },
+  profileImage:{
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover'
+  
+  },
+  header: {
+    justifyContent: 'flex-end',
+  },
+  headerText: {
+    width: '80%'
+  }
  });
