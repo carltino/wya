@@ -11,6 +11,7 @@ class AppDelegate: RCTAppDelegate {
 
     self.moduleName = "wya3"
     self.dependencyProvider = RCTAppDependencyProvider()
+    
 
 
 

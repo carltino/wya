@@ -22,7 +22,7 @@ const SignUpScreen = ({navigation}) => {
 
 
       console.log('Sign Up Successful', 'Welcome!');
-      navigation.navigate('Home'); 
+      navigation.navigate('Home', { username }); 
   } catch (error) {
       Alert.alert('Registration Failed', error.response?.data.message || 'Incorrect username or password');
   }
@@ -39,7 +39,7 @@ const SignUpScreen = ({navigation}) => {
 
 
       console.log('Login In Successful', 'Welcome!');
-      navigation.navigate('Home');
+      navigation.navigate('Home', { username });
   } catch (error) {
       Alert.alert('Registration Failed', error.response?.data.message || 'Incorrect username or password');
   }

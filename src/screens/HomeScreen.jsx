@@ -3,16 +3,18 @@ import React, {useState, useEffect} from 'react'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { InnerContainer, MyContainer, PageTitle, SubTitle, MyTextBox } from '../../styles';
 import axios from 'axios'
+import { useRoute } from '@react-navigation/native';
 
 
 const HomeScreen = () => {
 
   const [markers, setMarkers] = useState([]);
+  const route = useRoute();
+  const { username } = route.params;
   
   useEffect(() => {
     axios.get('http://localhost:5000/markers')
     .then(resp => {
-      console.log("my markerss " +resp.data)
       setMarkers(resp.data);
   })
     .catch(err => console.log(err));
@@ -22,7 +24,7 @@ const HomeScreen = () => {
     <MyContainer>
         <View style={styles.header}>
           <View style={styles.headerText}>
-            <PageTitle>Welcome To WYA</PageTitle>
+            <PageTitle>Push Up { username }</PageTitle>
             <SubTitle>see who's close by</SubTitle>
           </View>
           <TouchableOpacity style={styles.profileContainer}><Image style={styles.profileImage} source={require('../assets/spidey.jpeg')} /></TouchableOpacity>
