@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Image, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
  export const Colors = {
     primary: '#189de4',
     second: '#242444',
-    tertiary: '#4c7101',
+    tertiary: '#7393B3',
     white: '#ffffff',
     brand: '#00008b',
 
@@ -39,6 +39,7 @@ export const PageTitle = styled.Text`
 
 export const SubTitle = styled.Text`
     font-size: 20px;
+    font-weight: bold;
     text-align: center;
     color: ${primary};
     padding: 10px;
@@ -84,3 +85,11 @@ export const MyButtonText = styled.Text`
     text-align: center;
     color: ${white};
 `
+
+export const stylesConst = StyleSheet.create({
+    background: {
+        flex: 1, 
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})

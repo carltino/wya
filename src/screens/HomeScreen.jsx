@@ -23,7 +23,7 @@ const HomeScreen = () => {
         <View style={styles.header}>
           <View style={styles.headerText}>
             <PageTitle>Welcome To WYA</PageTitle>
-            <SubTitle>Find other's near you below</SubTitle>
+            <SubTitle>see who's close by</SubTitle>
           </View>
           <TouchableOpacity style={styles.profileContainer}><Image style={styles.profileImage} source={require('../assets/spidey.jpeg')} /></TouchableOpacity>
         </View>

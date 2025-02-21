@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { useState } from 'react';
 import React from 'react';
-import { FormArea, MyButtonText,ButtonArea,  InnerContainer, MyContainer,  PageLogo, PageTitle, SubTitle, MyTextBox, Colors, MyButton } from '../../styles';
+import { FormArea, MyButtonText,ButtonArea,  InnerContainer, MyContainer,  PageLogo, PageTitle, SubTitle, MyTextBox, Colors, MyButton, stylesConst } from '../../styles';
 import { Formik } from 'formik';
 import axios from 'axios';
 
@@ -47,43 +47,49 @@ const SignUpScreen = ({navigation}) => {
 
 
   return (
-    <MyContainer>
-      <InnerContainer>
-        <PageLogo resizeMode="cover" source={require('./../assets/180.png')}/>
-        <PageTitle>Push Up</PageTitle>
-        <SubTitle>Create Account / Login</SubTitle>
-        <FormArea>
-
-        <MyTextBox
-          placeholder="Username" 
-          placeholderTextColor = "#ffffff"
-          value={username}
-          onChangeText={setUsername}
-
-        />
+    <ImageBackground
+      source={require('./../assets/mountain3.jpeg')}
+      resizeMode="cover"
+      style={stylesConst.background}
+    >
+      <MyContainer>
+        <InnerContainer>
+          <PageLogo resizeMode="cover" source={require('./../assets/180.png')}/>
+          <PageTitle>Push Up</PageTitle>
+          <SubTitle>Create Account / Login</SubTitle>
+          <FormArea>
 
           <MyTextBox
-          placeholder="Password" 
-          placeholderTextColor = "#ffffff"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
+            placeholder="Username" 
+            placeholderTextColor = "#ffffff"
+            value={username}
+            onChangeText={setUsername}
 
           />
-          <ButtonArea>
-            <MyButton
-              onPress={handleSignUp}
-            >
-              <MyButtonText>Sign Up</MyButtonText>
-            </MyButton>
-            <MyButton onPress={handleLogin}>
-              <MyButtonText>Login</MyButtonText>
-            </MyButton>
-          </ButtonArea>
-          </FormArea>
-        
-      </InnerContainer>
-    </MyContainer>
+
+            <MyTextBox
+            placeholder="Password" 
+            placeholderTextColor = "#ffffff"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+
+            />
+            <ButtonArea>
+              <MyButton
+                onPress={handleSignUp}
+              >
+                <MyButtonText>Sign Up</MyButtonText>
+              </MyButton>
+              <MyButton onPress={handleLogin}>
+                <MyButtonText>Login</MyButtonText>
+              </MyButton>
+            </ButtonArea>
+            </FormArea>
+          
+        </InnerContainer>
+      </MyContainer>
+    </ImageBackground>
   );
 };
 
